@@ -1,4 +1,4 @@
-package dev.enrico.tutorial.tutorial;
+package dev.enrico.tutorial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
