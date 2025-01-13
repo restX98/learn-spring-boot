@@ -26,7 +26,7 @@ public class RunRepository {
                 .list();
     }
 
-    Optional<Run> findById(Integer id) {
+    public Optional<Run> findById(Integer id) {
         return this.jdbcClient
                 .sql("SELECT * FROM Run WHERE id=:id")
                 .param("id", id)
@@ -34,7 +34,7 @@ public class RunRepository {
                 .optional();
     }
 
-    void create(Run run) {
+    public void create(Run run) {
         int created = this.jdbcClient
                 .sql("INSERT INTO Run(id, title, started_on, completed_on, miles, location) values(?,?,?,?,?,?)")
                 .params(List.of(run.id(), run.title(), run.startedOn(), run.completedOn(), run.miles(),
@@ -43,7 +43,7 @@ public class RunRepository {
         Assert.state(created == 1, "Failed to create run " + run.title());
     }
 
-    void update(Run run, Integer id) {
+    public void update(Run run, Integer id) {
         int updated = this.jdbcClient
                 .sql("UPDATE Run SET title = ?, started_on = ?, completed_on = ?, miles = ?, location = ? WHERE id = ?")
                 .params(List.of(run.title(), run.startedOn(), run.completedOn(), run.miles(), run.location().toString(),
@@ -52,12 +52,32 @@ public class RunRepository {
         Assert.state(updated == 1, "Failed to update run " + id);
     }
 
-    void delete(Integer id) {
+    public void delete(Integer id) {
         int deleted = this.jdbcClient
                 .sql("DELETE FROM run WHERE id=:id")
                 .param("id", id)
                 .update();
         Assert.state(deleted == 1, "Dailed to delete run " + id);
+    }
+
+    public int count() {
+        return this.jdbcClient
+                .sql("SELECT * FROM Run")
+                .query()
+                .listOfRows()
+                .size();
+    }
+
+    public void saveAll(List<Run> runs) {
+        runs.stream().forEach(this::create);
+    }
+
+    public List<Run> findByLocation(String location) {
+        return this.jdbcClient
+                .sql("SELECT * FROM Run WHERE location=:location")
+                .param(location)
+                .query(Run.class)
+                .list();
     }
 
     /*

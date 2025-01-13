@@ -1,0 +1,84 @@
+{
+    "runs": [
+        {
+            "id": 1,
+            "title": "Run 1",
+            "startedOn": "2025-01-13T19:12:42",
+            "completedOn": "2025-01-13T20:44:42",
+            "miles": 4,
+            "location": "INDOOR"
+        },
+        {
+            "id": 2,
+            "title": "Run 2",
+            "startedOn": "2025-01-13T17:46:22",
+            "completedOn": "2025-01-13T18:41:22",
+            "miles": 10,
+            "location": "INDOOR"
+        },
+        {
+            "id": 3,
+            "title": "Run 3",
+            "startedOn": "2025-01-13T19:12:45",
+            "completedOn": "2025-01-13T19:56:45",
+            "miles": 8,
+            "location": "INDOOR"
+        },
+        {
+            "id": 4,
+            "title": "Run 4",
+            "startedOn": "2025-01-13T11:26:41",
+            "completedOn": "2025-01-13T12:21:41",
+            "miles": 6,
+            "location": "INDOOR"
+        },
+        {
+            "id": 5,
+            "title": "Run 5",
+            "startedOn": "2025-01-13T19:17:48",
+            "completedOn": "2025-01-13T20:35:48",
+            "miles": 2,
+            "location": "INDOOR"
+        },
+        {
+            "id": 6,
+            "title": "Run 6",
+            "startedOn": "2025-01-13T14:02:54",
+            "completedOn": "2025-01-13T14:52:54",
+            "miles": 7,
+            "location": "OUTDOOR"
+        },
+        {
+            "id": 7,
+            "title": "Run 7",
+            "startedOn": "2025-01-13T14:23:54",
+            "completedOn": "2025-01-13T15:09:54",
+            "miles": 4,
+            "location": "OUTDOOR"
+        },
+        {
+            "id": 8,
+            "title": "Run 8",
+            "startedOn": "2025-01-13T10:39:56",
+            "completedOn": "2025-01-13T11:41:56",
+            "miles": 9,
+            "location": "INDOOR"
+        },
+        {
+            "id": 9,
+            "title": "Run 9",
+            "startedOn": "2025-01-13T14:36:14",
+            "completedOn": "2025-01-13T15:16:14",
+            "miles": 3,
+            "location": "INDOOR"
+        },
+        {
+            "id": 10,
+            "title": "Run 10",
+            "startedOn": "2025-01-13T07:16:54",
+            "completedOn": "2025-01-13T08:42:54",
+            "miles": 7,
+            "location": "INDOOR"
+        }
+    ]
+}

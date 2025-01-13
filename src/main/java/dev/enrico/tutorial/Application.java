@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import dev.enrico.tutorial.run.Location;
 import dev.enrico.tutorial.run.Run;
+import dev.enrico.tutorial.run.RunRepository;
 
 @SpringBootApplication
 public class Application {
@@ -31,13 +32,14 @@ public class Application {
 		// System.out.println(welcomeMessage);
 	}
 
-	@Bean
-	CommandLineRunner runner() {
-		return args -> {
-			Run run = new Run(1, "First run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.HOURS), 5,
-					Location.OUTDOOR);
-			log.info("Run: " + run);
-		};
-	}
+	// @Bean
+	// CommandLineRunner runner(RunRepository runRepository) {
+	// return args -> {
+	// Run run = new Run(1, "First run", LocalDateTime.now(),
+	// LocalDateTime.now().plus(1, ChronoUnit.HOURS), 5,
+	// Location.OUTDOOR);
+	// runRepository.create(run);
+	// };
+	// }
 
 }
