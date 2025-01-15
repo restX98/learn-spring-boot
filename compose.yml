@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=tutorial'
+      - 'POSTGRES_PASSWORD=psw'
+      - 'POSTGRES_USER=ciccio'
+    ports:
+      # port1:port2 -> port1 = docker port; port2 = local port; 
+      - '5432:5432'

@@ -32,7 +32,7 @@ public class RunController {
     }
 
     @GetMapping("{id}")
-    public Run findById(@PathVariable Integer id) {
+    Run findById(@PathVariable Integer id) {
         Optional<Run> run = this.runRepository.findById(id);
         if (run.isEmpty()) {
             // throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -41,28 +41,51 @@ public class RunController {
         return run.get();
     }
 
+    @GetMapping("location/{location}")
+    List<Run> findByLocation(@PathVariable String location) {
+        List<Run> runs = this.runRepository.findAllByLocation(location);
+        return runs;
+    }
+
+    @GetMapping("miles/{miles}")
+    List<Run> findByMiles(@PathVariable Integer miles) {
+        List<Run> runs = this.runRepository.findAllByMiles(miles);
+        return runs;
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     Run create(@Valid @RequestBody Run run) {
-        this.runRepository.create(run);
+        this.runRepository.save(run);
         return run;
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
-        this.runRepository.update(run, id);
+        Optional<Run> optionalRun = this.runRepository.findById(id);
+        if (optionalRun.isPresent()) {
+            this.runRepository.save(new Run(
+                    id,
+                    run.title(),
+                    run.startedOn(),
+                    run.completedOn(),
+                    run.miles(),
+                    run.location(),
+                    run.version()));
+        } else {
+            throw new RunNotFoundException();
+        }
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id) {
-        this.runRepository.delete(id);
-    }
-
-    // Basic get route
-    @GetMapping("/home")
-    String home() {
-        return "Hello World";
+        Optional<Run> optionalRun = runRepository.findById(id);
+        if (optionalRun.isPresent()) {
+            this.runRepository.delete(optionalRun.get());
+        } else {
+            throw new RunNotFoundException();
+        }
     }
 }
